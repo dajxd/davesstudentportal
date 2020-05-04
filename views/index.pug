@@ -1,11 +1,24 @@
 extends layout
 
 block content
-    h2= title
-    p Enter your first name for your info!
-    form(method='get' action='/users')
-        div#login.form-group
-            label(for='name') Name:
-            input#name.form-control(type='text', placeholder='' name='name')
-            button.btn.btn-primary(type='submit') Go
-        h3#error #{error}
+    div#all
+        h2= title
+        p Enter your first name for your info!
+        form(method='get' action='/users')
+            div#login.form-group
+                label(for='name') Name:
+                input#name.form-control(type='text', placeholder='' name='name')
+                br
+                button#gobutton.btn.btn-primary(type='submit') Go
+            h3#error #{error}
+    script.
+        var bMobile =   // will be true if running on a mobile device
+            navigator.userAgent.indexOf("Mobile") !== -1 ||
+            navigator.userAgent.indexOf("iPhone") !== -1 ||
+            navigator.userAgent.indexOf("Android") !== -1 ||
+            navigator.userAgent.indexOf("Windows Phone") !== -1;
+        if (bMobile){
+            var sheet = document.createElement('style')
+            sheet.innerHTML = "#all { text-align: center;} form {margin: auto;}  body {font-size: 2em;} #login {text-align: center;}";
+            document.body.appendChild(sheet);
+        };
