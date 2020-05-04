@@ -12,9 +12,6 @@ block content
                 button#gobutton.btn.btn-primary(type='submit') Go
             h3#error #{error}
     script.
-        var ua = document.createElement('p');
-        ua.innerHTML = navigator.userAgent;
-        document.body.appendChild(ua);
         var bMobile =   // will be true if running on a mobile device
             navigator.userAgent.indexOf("Mobile") !== -1 ||
             navigator.userAgent.indexOf("iPhone") !== -1 ||
@@ -23,6 +20,6 @@ block content
 
         if (bMobile){
             var sheet = document.createElement('style')
-            sheet.innerHTML = "#all { text-align: center;} form {margin: auto;}  body {font-size: 6em;} #login {text-align: center;}";
+            sheet.innerHTML = "#all { text-align: center;} form {margin: auto;}  body {font-size: 2em;} #login {text-align: center;}";
             document.body.appendChild(sheet);
         };
