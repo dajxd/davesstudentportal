@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    h2= title
+    p Enter your first name for your info!
+    form(method='get' action='/users')
+        div#login.form-group
+            label(for='name') Name:
+            input#name.form-control(type='text', placeholder='' name='name')
+            button.btn.btn-primary(type='submit') Go
+        h3#error #{error}

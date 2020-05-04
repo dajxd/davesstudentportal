@@ -1,0 +1,136 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: aliceblue;
+}
+
+h1 {
+    font-size: 2.4em;
+}
+
+h2 {
+    font-size: 1.7em;
+    color: purple;
+}
+
+a {
+    color: #00B7FF;
+}
+
+li {
+    font-size: 1.2em;
+    padding-bottom: 10px;
+}
+
+a {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: black;
+}
+
+@keyframes colorchange {
+    0% {
+        color: black
+    }
+    100% {
+        color: darkslategrey
+    }
+}
+
+a:hover {
+    animation: colorchange 300ms;
+    color: darkslategrey;
+}
+
+input, select {
+    animation: ease-in;
+    margin: 7px;
+    font-size: 1.2em;
+}
+
+input {
+    width: 200px;
+    height: 35px;
+    text-align: center;
+}
+
+textarea {
+    font-family: "Lucida Grande", sans-serif;
+    font-size: 14px;
+    width: 200px;
+    height: 200px;
+}
+
+#left {
+    text-align: center;
+    position: absolute;
+    width: 220px;
+    height: 500px;
+}
+
+#right {
+    text-align: center;
+    margin-left: 250px;
+    position: absolute;
+    width: 220px;
+    height: 500px;
+}
+
+#link1, #link2, #link3, #link4 {
+    background: #212529;
+    color: white;
+    opacity: .4;
+    margin-bottom: 10px;
+    margin-top: -10px;
+}
+
+#nameselection {
+    position: absolute;
+    margin-top: -20px;
+    margin-left: 165px;
+    z-index: 1;
+}
+
+
+#newname {
+    position: absolute;
+    margin-top: -40px;
+    margin-left: 130px;
+}
+
+#linkchoices {
+    text-align: center;
+    margin-left: 500px;
+    width: 220px;
+    height: 500px;
+}
+
+.clickAndCopy {
+    margin-top:6px;
+    margin-bottom:10px;
+    width: 200px;
+    height: 50px;
+}
+
+#login {
+    text-align:left;
+}
+
+#error {
+    animation-duration: 2s;
+    animation-name: fadeFromBackground;
+    color: darkred;
+}
+
+@keyframes fadeFromBackground {
+    from {
+        color: aliceblue;
+        /*opacity: 0;*/
+    }
+
+    to {
+        color: darkred;
+        /*opacity:1;*/
+    }
+
+}

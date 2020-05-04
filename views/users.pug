@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    script.
+        history.replaceState({}, null, "/index.html");
+    h1 Hey #{name}!
+    h2 Here's what we talked about for homework:
+    ul
+        each val,key  in homework
+            li= decodeURIComponent(val)
+    h2 Other things to think about:
+    p= decodeURIComponent(notes)
+    h2 Resources:
+    ul
+        each val, key in links
+            a(href=decodeURIComponent(val))=decodeURIComponent(key)
+            p
