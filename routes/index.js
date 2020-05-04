@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/', function (req, res, next) {
 
 
-    res.render('index', {title: 'Dave\'s Student Portal', error: ''});
+    res.render('index', {title: 'Student Portal', error: ''});
 });
 
 module.exports = router;

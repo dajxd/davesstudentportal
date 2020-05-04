@@ -1,8 +1,10 @@
 body {
-    padding: 50px;
+    padding: 0px 50px 50px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     background-color: aliceblue;
 }
+
+
 
 #gobutton {
     width: 80px;
@@ -125,17 +127,11 @@ textarea {
     animation-duration: 2s;
     animation-name: fadeFromBackground;
     color: darkred;
+    opacity:0;
 }
 
 @keyframes fadeFromBackground {
-    from {
-        color: aliceblue;
-        /*opacity: 0;*/
-    }
-
-    to {
-        color: darkred;
-        /*opacity:1;*/
-    }
-
+    0% { opacity: 0;}
+    50% { opacity: 1; }
+    100% { opacity: 0; }
 }

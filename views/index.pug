@@ -3,14 +3,16 @@ extends layout
 block content
     div#all
         h2= title
-        p Enter your first name for your info!
+        p Enter your first name for your info.
         form(method='get' action='/users')
             div#login.form-group
                 label(for='name') Name:
                 input#name.form-control(type='text', placeholder='' name='name')
                 br
                 button#gobutton.btn.btn-primary(type='submit') Go
-            h3#error #{error}
+            center
+                br
+                h3#error #{error}
     script.
         var bMobile =   // will be true if running on a mobile device
             navigator.userAgent.indexOf("Mobile") !== -1 ||
@@ -20,6 +22,9 @@ block content
 
         if (bMobile){
             var sheet = document.createElement('style')
-            sheet.innerHTML = "#all { text-align: center;} form {margin: auto;}  body {font-size: 2em;} #login {text-align: center;}";
+            sheet.innerHTML = "#all { text-align: center;} form {margin: auto;}  body {font-size: 2em;} #login {text-align: center;} #gobutton {font-size:1em; width: 130px;} input {height: 60px; width: 250px;}#all {\n" +
+                "    background: azure;\n" +
+                "    border: 1px solid black;\n" +
+                "    height: 400px;}";
             document.body.appendChild(sheet);
         };
