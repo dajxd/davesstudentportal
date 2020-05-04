@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var userlist = ['mia', 'katie', 'rafael', 'marina'];
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://davem:ClickUpper1@studentdata-8hxes.gcp.mongodb.net/test?retryWrites=true&w=majority";
+const uri = "mongodb+srv://davem:"+ENV['MONGOKEY']+"@studentdata-8hxes.gcp.mongodb.net/test?retryWrites=true&w=majority&family=4";
 
 
 router.get('/', function (req, res, next) {

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://davem:ClickUpper1@studentdata-8hxes.gcp.mongodb.net/test?retryWrites=true&w=majority";
+const uri = "mongodb+srv://davem:"+ENV['MONGOKEY']+"@studentdata-8hxes.gcp.mongodb.net/test?retryWrites=true&w=majority&family=4";
 const bcrypt = require("bcryptjs");
 
 router.get('/', function (req, res, next) {
