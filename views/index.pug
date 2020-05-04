@@ -12,11 +12,13 @@ block content
                 button#gobutton.btn.btn-primary(type='submit') Go
             h3#error #{error}
     script.
+        console.log(navigator.userAgent);
         var bMobile =   // will be true if running on a mobile device
             navigator.userAgent.indexOf("Mobile") !== -1 ||
             navigator.userAgent.indexOf("iPhone") !== -1 ||
             navigator.userAgent.indexOf("Android") !== -1 ||
             navigator.userAgent.indexOf("Windows Phone") !== -1;
+
         if (bMobile){
             var sheet = document.createElement('style')
             sheet.innerHTML = "#all { text-align: center;} form {margin: auto;}  body {font-size: 6em;} #login {text-align: center;}";
