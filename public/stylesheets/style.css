@@ -2,10 +2,13 @@ body {
     padding: 0 50px 50px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     background-color: aliceblue;
-    white-space: pre;
+    white-space: pre-wrap;
 }
 
-
+#userpagenotes {
+    width: 800px;
+    font-size: 1.2em;
+}
 
 #gobutton {
     width: 80px;

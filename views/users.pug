@@ -9,7 +9,7 @@ block content
         each val,key  in homework
             li= decodeURIComponent(val)
     h2 Other things to think about:
-    p #{decodeURIComponent(notes)}
+    ul#userpagenotes #{decodeURIComponent(notes)}
     h2 Resources:
     ul
         each val, key in links
