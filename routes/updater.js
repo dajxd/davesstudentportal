@@ -1,26 +1,28 @@
 var express = require('express');
 var router = express.Router();
-var userlist = ['mia', 'katie', 'rafael', 'marina'];
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://davem:"+process.env.MONGOKEY+"@studentdata-8hxes.gcp.mongodb.net/test?retryWrites=true&w=majority&family=4";
+const uri = "mongodb+srv://davem:ClickUpper1@studentdata-8hxes.gcp.mongodb.net/test?retryWrites=true&w=majority&family=4";
 
 
 router.get('/', function (req, res, next) {
-    let nameselection = req.query.nameselection;
-    let homework1 = encodeURIComponent(req.query.homework1);
-    let homework2 = encodeURIComponent(req.query.homework2);
-    let homework3 = encodeURIComponent(req.query.homework3);
-    let homework4 = encodeURIComponent(req.query.homework4);
-    let link1 = encodeURIComponent(req.query.link1);
-    let link2 = encodeURIComponent(req.query.link2);
-    let link3 = encodeURIComponent(req.query.link3);
-    let link4 = encodeURIComponent(req.query.link4);
-    let link1title = encodeURIComponent(req.query.link1title);
-    let link2title = encodeURIComponent(req.query.link2title);
-    let link3title = encodeURIComponent(req.query.link3title);
-    let link4title = encodeURIComponent(req.query.link4title);
-    let newnotes = encodeURIComponent(req.query.notes);
-
+    function rfc3986EncodeURIComponent (str) {
+        return encodeURIComponent(str).replace(/[!'()*]/g, escape);
+    }
+    nameselection = req.query.nameselection;
+    homework1 = rfc3986EncodeURIComponent(req.query.homework1);
+    homework2 = rfc3986EncodeURIComponent(req.query.homework2);
+    homework3 = rfc3986EncodeURIComponent(req.query.homework3);
+    homework4 = rfc3986EncodeURIComponent(req.query.homework4);
+    link1 = rfc3986EncodeURIComponent(req.query.link1);
+    link2 = rfc3986EncodeURIComponent(req.query.link2);
+    link3 = rfc3986EncodeURIComponent(req.query.link3);
+    link4 = rfc3986EncodeURIComponent(req.query.link4);
+    link1title = rfc3986EncodeURIComponent(req.query.link1title);
+    link2title = rfc3986EncodeURIComponent(req.query.link2title);
+    link3title = rfc3986EncodeURIComponent(req.query.link3title);
+    link4title = rfc3986EncodeURIComponent(req.query.link4title);
+    newnotes = rfc3986EncodeURIComponent(req.query.notes).replace(/[!'()*]/g, escape);
+    console.log(decodeURIComponent(newnotes));
 
     if (req.query.newname != undefined) {
         var newname = req.query.newname
@@ -49,10 +51,10 @@ router.get('/', function (req, res, next) {
         });
         newlinks = {};
         newHomework = {1: homework1, 2: homework2, 3: homework3, 4: homework4};
-        // link1title = req.query.link1title;
-        // link2title = req.query.link2title;
-        // link3title = req.query.link3title;
-        // link4title = req.query.link4title;
+        link1title = req.query.link1title;
+        link2title = req.query.link2title;
+        link3title = req.query.link3title;
+        link4title = req.query.link4title;
         newlinks[link1title] = link1;
         newlinks[link2title] = link2;
         newlinks[link3title] = link3;
