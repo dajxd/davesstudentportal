@@ -1,33 +1,30 @@
 extends layout
 
 block content
+    div#background
+
+    div#allbg
     div#all
-        h2= title
+        h3#indextitle=title
         p Enter your first name for your info
         form(method='get' action='/users')
             div#login.form-group
                 input#name.form-control(type='text', placeholder='' name='name')
                 br
-                button#gobutton.btn.btn-primary(type='submit') Go
+                button#gobutton.btn.btn-primary(type='submit') Submit
             center
                 br
                 h3#error #{error}
     script.
-        var bMobile =   // will be true if running on a mobile device
-            navigator.userAgent.indexOf("Mobile") !== -1 ||
-            navigator.userAgent.indexOf("iPhone") !== -1 ||
-            navigator.userAgent.indexOf("Android") !== -1 ||
-            navigator.userAgent.indexOf("Windows Phone") !== -1;
-        bMobile = true
+        // var bMobile =
+        //     navigator.userAgent.indexOf("Mobile") !== -1 ||
+        //     navigator.userAgent.indexOf("iPhone") !== -1 ||
+        //     navigator.userAgent.indexOf("Android") !== -1 ||
+        //     navigator.userAgent.indexOf("Windows Phone") !== -1;
+
 
         var sheet = document.createElement('style')
-        sheet.innerHTML = "form {margin: auto;}  body {font-size: 1.5em; margin-top: 50px;} #login {text-align: center;} #gobutton {font-size:.8em; width: 100px; height: 40px; margin: 15px;} input {height: 40px; width: 200px;}#all {\n" +
-            "    background: azure;\n" +
-            "    border: 1px solid black;\n" +
-            "    height: 300px;" +
-            "    text-align: center; " +
-            "    width: 55%;" +
-            "    margin: 0 auto;}";
+        sheet.innerHTML = "form {margin: auto;}  body {font-size: 1.5em;} h2 {color:white; margin-bottom:0;}#login {text-align: center;} #gobutton {} input {}";
         document.body.appendChild(sheet);
         // sheet.innerHTML = "#all { text-align: center;} form {margin: auto;}  body {font-size: 2em;} #login {text-align: center;} #gobutton {font-size:1em; width: 130px;} input {height: 60px; width: 250px;}#all {\n" +
         //     "    background: azure;\n" +
