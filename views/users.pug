@@ -1,15 +1,18 @@
 extends layout
 
 block content
-    h1 Hey #{name}!
-    h2 Here's what we talked about for homework:
-    ul
-        each val,key  in homework
-            li= decodeURIComponent(val)
-    h2 Other things to think about:
-    ul#userpagenotes #{decodeURIComponent(notes)}
-    h2 Resources:
-    ul
-        each val, key in links
-            a(href=decodeURIComponent(val))=decodeURIComponent(key)
-            p
+    center
+        h1 Hey #{name}!
+        div.usersection
+            h2 Here's what we talked about for homework:
+            ul
+                each val,key  in homework
+                    li= decodeURIComponent(val)
+        div.usersection
+            h2 Other things to think about:
+            p#userpagenotes #{decodeURIComponent(notes)}
+        div.usersection
+            h2 Resources:
+            each val, key in links
+                a(href=decodeURIComponent(val))=decodeURIComponent(key)
+                p
