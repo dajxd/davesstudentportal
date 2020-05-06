@@ -1,13 +1,14 @@
 var express = require('express');
 var router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://davem:"+process.env.MONGOKEY+"@studentdata-8hxes.gcp.mongodb.net/test?retryWrites=true&w=majority&family=4";
+const uri = "mongodb+srv://davem:" + process.env.MONGOKEY + "@studentdata-8hxes.gcp.mongodb.net/test?retryWrites=true&w=majority&family=4";
 
 
 router.get('/', function (req, res, next) {
-    function rfc3986EncodeURIComponent (str) {
+    function rfc3986EncodeURIComponent(str) {
         return encodeURIComponent(str).replace(/[!'()*]/g, escape);
     }
+
     nameselection = req.query.nameselection;
     homework1 = rfc3986EncodeURIComponent(req.query.homework1);
     homework2 = rfc3986EncodeURIComponent(req.query.homework2);
