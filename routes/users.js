@@ -34,7 +34,7 @@ router.get('/', function (req, res, next) {
             }
             catch(error){
                 console.error(error);
-                res.render('index', {title: 'Dave\'s Student Portal', error: 'Not a registered student.'})
+                res.render('index', {title: 'Student Portal', error: 'Not a registered student.'})
             }
 
         });
