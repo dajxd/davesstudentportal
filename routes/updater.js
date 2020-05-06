@@ -51,7 +51,17 @@ router.get('/', function (req, res, next) {
 
         });
         newlinks = {};
-        newHomework = {1: homework1, 2: homework2, 3: homework3, 4: homework4};
+        // newHomework = {1: homework1, 2: homework2, 3: homework3, 4: homework4};
+        newHomework = {};
+        homeworks = [homework1,homework2,homework3,homework4];
+        var hwc = 1
+        for (hw in homeworks){
+
+            if (homeworks[hw].length > 1 ){
+                newHomework[hwc] = homeworks[hw];
+                hwc = hwc+1;
+            }
+        }
         link1title = req.query.link1title;
         link2title = req.query.link2title;
         link3title = req.query.link3title;
