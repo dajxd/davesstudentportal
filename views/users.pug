@@ -1,18 +1,22 @@
 extends layout
 
 block content
-    center
-        h1 Hey #{name}!
+    div#background
+
+
+        h1#hiname Hey #{name}!
         div.usersection
             h2 Here's what we talked about for homework:
             ul
                 each val,key  in homework
-                    li= decodeURIComponent(val)
-        div.usersection
+                    if decodeURIComponent(val) != "undefined"
+                        li= decodeURIComponent(val)
+        div.usersection#notesdiv
             h2 Other things to think about:
             p#userpagenotes #{decodeURIComponent(notes)}
         div.usersection
             h2 Resources:
             each val, key in links
-                a(href=decodeURIComponent(val))=decodeURIComponent(key)
-                p
+                if decodeURIComponent(val) != "undefined"
+                    a(href=decodeURIComponent(val))=decodeURIComponent(key)
+                    p

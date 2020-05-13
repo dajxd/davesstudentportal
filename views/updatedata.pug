@@ -1,52 +1,54 @@
 extends layout
 
 block content
-    form(method='get' action='/updater' id='updateform')
-        div.form-group
+    div#updateall
 
-            select#nameselection.form-control(name='nameselection')
-                option(val='blah') Choose a Student
-                each thing in data
-                    option(val=thing.name) #{thing.name}
-                option(val='addnew') New Student
-            div#left
-                h2 Homework:
-                input#homework1.form-control(type='text', placeholder='Homework 1' name='homework1')
-                br
-                input#homework2.form-control(type='text', placeholder='Homework 2' name='homework2')
-                br
-                input#homework3.form-control(type='text', placeholder='Homework 3' name='homework3')
-                br
-                input#homework4.form-control(type='text', placeholder='Homework 4' name='homework4')
-                br
-                textarea#notes.form-control(placeholder='notes' name='notes')
-                br
+        form(method='get' action='/updater' id='updateform')
+            div.form-group
 
-            div#right
+                select#nameselection.form-control(name='nameselection')
+                    option(val='blah') Choose a Student
+                    each thing in data
+                        option(val=thing.name) #{thing.name}
+                    option(val='addnew') New Student
+                div#left
+                    h2 Homework:
+                    input#homework1.form-control(type='text', placeholder='Homework 1' name='homework1')
+                    br
+                    input#homework2.form-control(type='text', placeholder='Homework 2' name='homework2')
+                    br
+                    input#homework3.form-control(type='text', placeholder='Homework 3' name='homework3')
+                    br
+                    input#homework4.form-control(type='text', placeholder='Homework 4' name='homework4')
+                    br
+                    textarea#notes.form-control(placeholder='notes' name='notes')
+                    br
 
-                h2 Links:
-                input#link1title.form-control(type='text', placeholder='Link 1 title' name='link1title')
+                div#right
+
+                    h2 Links:
+                    input#link1title.form-control(type='text', placeholder='Link 1 title' name='link1title')
+                    br
+                    input#link1.form-control(type='text', placeholder='Link 1' name='link1')
+                    br
+                    input#link2title.form-control(type='text', placeholder='Link 2 title' name='link2title')
+                    br
+                    input#link2.form-control(type='text', placeholder='Link 2' name='link2')
+                    br
+                    input#link3title.form-control(type='text', placeholder='Link 3 title' name='link3title')
+                    br
+                    input#link3.form-control(type='text', placeholder='Link 3' name='link3')
+                    br
+                    input#link4title.form-control(type='text', placeholder='Link 4 title' name='link4title')
+                    br
+                    input#link4.form-control(type='text', placeholder='Link 4' name='link4')
+                    br
+                    button#submit.btn.btn-primary(type='submit') Submit
+        div#linkchoices
+            h2 Click to copy
+            each resource in resourcelist
+                button.clickAndCopy #{resource}
                 br
-                input#link1.form-control(type='text', placeholder='Link 1' name='link1')
-                br
-                input#link2title.form-control(type='text', placeholder='Link 2 title' name='link2title')
-                br
-                input#link2.form-control(type='text', placeholder='Link 2' name='link2')
-                br
-                input#link3title.form-control(type='text', placeholder='Link 3 title' name='link3title')
-                br
-                input#link3.form-control(type='text', placeholder='Link 3' name='link3')
-                br
-                input#link4title.form-control(type='text', placeholder='Link 4 title' name='link4title')
-                br
-                input#link4.form-control(type='text', placeholder='Link 4' name='link4')
-                br
-                button#submit.btn.btn-primary(type='submit') Submit
-    div#linkchoices
-        h2 Click to copy
-        each resource in resourcelist
-            button.clickAndCopy #{resource}
-            br
     script(src='https://code.jquery.com/jquery-3.5.0.js')
     script.
 
@@ -89,6 +91,7 @@ block content
                 if (selname == 'New Student') {
                     $("#nameselection").before("</br><input id='newname' class='form-control' type='text' placeholder='Name' name='newname'>");
                     $('#nameselection').remove();
+                    $('#updateform')[0].reset();
                 } else if (selname == 'Choose a Student') {
                     $("#submit").attr('disabled', 'disabled');
                     $('#updateform')[0].reset();
