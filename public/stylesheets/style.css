@@ -53,6 +53,11 @@ body {
     margin-top: 20px;
     font-family: 'Montserrat', sans-serif;
 }
+
+#allusers {
+    text-align: center;
+
+}
 #allbg {
     height: 250px;
     text-align: center;
@@ -73,6 +78,7 @@ body {
     width: 100%;
     height: 100%;
     position: fixed;
+    margin-top: -50px;
     z-index: -999;
     text-align: center;
     background-repeat: no-repeat;

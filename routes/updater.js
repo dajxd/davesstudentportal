@@ -22,7 +22,7 @@ router.get('/', function (req, res, next) {
     link2title = rfc3986EncodeURIComponent(req.query.link2title);
     link3title = rfc3986EncodeURIComponent(req.query.link3title);
     link4title = rfc3986EncodeURIComponent(req.query.link4title);
-    newnotes = rfc3986EncodeURIComponent(req.query.notes).replace(/[!'()*]/g, escape);
+    newnotes = rfc3986EncodeURIComponent(req.query.notes).replace(/[!'()*]/g, escape); //should probably do this to all of them
     console.log(decodeURIComponent(newnotes));
 
     if (req.query.newname != undefined) {
