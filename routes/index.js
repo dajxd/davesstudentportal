@@ -6,7 +6,10 @@ router.get('/',
         res.render('index', {title: 'Student Portal', error: ''});
     });
 router.post('/',
+
     function (req, res) {
+        const MongoClient = require('mongodb').MongoClient;
+        const uri = "mongodb+srv://davem:" + process.env.MONGOKEY + "@studentdata-8hxes.gcp.mongodb.net/test?retryWrites=true&w=majority&family=4";
         var name = req.body.name;
         name = name.toLowerCase();
         if (name == "dave") {
