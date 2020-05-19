@@ -1,6 +1,8 @@
 extends layout
 
 block content
+    div#background
+
     div#updateall
 
         form(method='get' action='/updater' id='updateform')
@@ -51,12 +53,9 @@ block content
                 br
     script(src='https://code.jquery.com/jquery-3.5.0.js')
     script.
-
-        $(document).ready(function(){$("#submit").attr('disabled', 'disabled')});
-
-
-        var slinklist = JSON.parse('!{JSON.stringify(resourcelist)}');
-
+        $(document).ready(function () {
+            $("#submit").attr('disabled', 'disabled')
+        });
         function copyToClipboard(text) {
             var $temp = $("<input>");
             $("body").append($temp);
@@ -64,24 +63,25 @@ block content
             document.execCommand("copy");
             $temp.remove();
         }
-
         $(function () {
-            $('.clickAndCopy').click(function() {
-
+            $('.clickAndCopy').click(function () {
                 var texty = $(this).html();
                 copyToClipboard(texty)
             })
         });
         $(function () {
-            $('input').click(function(){
+            $('input').click(function () {
                 $(this).val('');
             })
         })
-        $(function () {
-            $('textarea').click(function () {
-                $(this).val('');
-            })
-        })
+        //
+        //below is for the notes bit, decided I don't wan't to clear it on click
+        //
+        // $(function () {
+        //     $('textarea').click(function () {
+        //         $(this).val('');
+        //     })
+        // })
         var sdata = JSON.parse('!{JSON.stringify(data)}');
         $(function () {
             $('select[name="nameselection"]').change(function () {
@@ -104,7 +104,6 @@ block content
                         $('input[name="homework3"]').val(decodeURIComponent(work[3]));
                         $('input[name="homework4"]').val(decodeURIComponent(work[4]));
 
-
                         let box = sdata[item].links
                         let titlebox = [];
                         let urlbox = [];
@@ -120,11 +119,13 @@ block content
                         $('input[name="link2title"]').val(decodeURIComponent(titlebox[1]));
                         $('input[name="link3title"]').val(decodeURIComponent(titlebox[2]));
                         $('input[name="link4title"]').val(decodeURIComponent(titlebox[3]));
-
                         $('textarea[name="notes"]').val(decodeURIComponent(sdata[item].notes));
-
                     }
-
                 }
+                $("input").each(function () {
+                    if ($(this).val() == 'undefined') {
+                        $(this).val('');
+                    }
+                });
             });
         });

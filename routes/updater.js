@@ -23,7 +23,6 @@ router.get('/', function (req, res, next) {
     link3title = rfc3986EncodeURIComponent(req.query.link3title);
     link4title = rfc3986EncodeURIComponent(req.query.link4title);
     newnotes = rfc3986EncodeURIComponent(req.query.notes).replace(/[!'()*]/g, escape); //should probably do this to all of them
-    console.log(decodeURIComponent(newnotes));
 
     if (req.query.newname != undefined) {
         var newname = req.query.newname
@@ -46,20 +45,18 @@ router.get('/', function (req, res, next) {
                 }
 
                 resolve(allnames);
-                reject('name promise came up empty')
+                reject('name promise came up empty. not nice, name promise.')
             });
 
         });
         newlinks = {};
-        // newHomework = {1: homework1, 2: homework2, 3: homework3, 4: homework4};
         newHomework = {};
-        homeworks = [homework1,homework2,homework3,homework4];
+        homeworks = [homework1, homework2, homework3, homework4];
         var hwc = 1
-        for (hw in homeworks){
-
-            if (homeworks[hw].length > 1 ){
+        for (hw in homeworks) {
+            if (homeworks[hw].length > 1) {
                 newHomework[hwc] = homeworks[hw];
-                hwc = hwc+1;
+                hwc = hwc + 1;
             }
         }
         link1title = req.query.link1title;
@@ -70,7 +67,6 @@ router.get('/', function (req, res, next) {
         newlinks[link2title] = link2;
         newlinks[link3title] = link3;
         newlinks[link4title] = link4;
-
 
         namePromise.then((allnames) => {
             if (allnames.includes(nameselection)) {

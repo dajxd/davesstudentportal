@@ -29,7 +29,6 @@ router.get('/', function (req, res, next) {
         }); //promise dec
         namePromise.then((results) => {
             client.close();
-            console.log('closed the db');
 
             res.render('updatedata', {title: 'Data Updater', data: results, resourcelist: linklist});
 

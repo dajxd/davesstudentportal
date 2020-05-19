@@ -1,17 +1,34 @@
 extends layout
 
 block content
+    link(rel='stylesheet', href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')
+    script(src='https://code.jquery.com/jquery-3.5.0.js')
+    script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
+    script.
+        $(function () {
+            $("#dialog").dialog();
+        });
+    div#dialog(title="Password Info")
+        p Your password right now is just your first name twice in lowercase.
+        p For instance: my username would be 'dave' and my password would be 'davedave'. No quotation marks.
+        p Once you log in you can change your password to whatever you like, which I really encourage.
+        p This notice won't stay up for long 'cause it's annoying, so change your password when you can!
+        p Finally, please let me know if anything is broken here. It works on my devices, but that's a small sample <size></size>
+
     div#background
 
     div#allbg
     div#all
+
         h3#indextitle=title
-        p Enter your first name for your info
-        form(method='get' action='/users')
+        form(method='post' action='/')
             div#login.form-group
-                input#name.form-control(type='text', placeholder='' name='name')
+                input#name.form-control(type='text' placeholder='First Name' name='name')
+                br
+                input#password.form-control(placeholder='Password' name='password' type='password')
                 br
                 button#gobutton.btn.btn-primary(type='submit') Submit
+                br
             center
                 br
                 h3#error #{error}
@@ -38,3 +55,4 @@ block content
                 "#gobutton {} input {}}";
         }
         document.body.appendChild(sheet);
+
