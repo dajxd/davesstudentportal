@@ -74,14 +74,7 @@ block content
                 $(this).val('');
             })
         })
-        //
-        //below is for the notes bit, decided I don't wan't to clear it on click
-        //
-        // $(function () {
-        //     $('textarea').click(function () {
-        //         $(this).val('');
-        //     })
-        // })
+
         var sdata = JSON.parse('!{JSON.stringify(data)}');
         $(function () {
             $('select[name="nameselection"]').change(function () {
