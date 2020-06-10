@@ -23,7 +23,7 @@ router.get('/', function (req, res, next) {
             }
         );
         client.close();
-        res.render('updater', {title: 'Updated'})
+        res.render('/', {title: 'Updated'})
     });
 });
 
