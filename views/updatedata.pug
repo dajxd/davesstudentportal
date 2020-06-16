@@ -1,6 +1,21 @@
 extends layout
 
 block content
+    script.
+        function checkPass() {
+            $(function () {
+                if ($('input[name="pass"]').val() == JSON.parse('!{JSON.stringify(pass)}')){
+                    $('#block').remove();
+                }
+                else {
+                    alert('nope');
+                }
+            })
+        }
+
+    div#block
+        input#pass(name='pass')
+        button#passsubmit.btn.btn-primary(onclick='checkPass()') Submit
     div#background
 
     div#updateall

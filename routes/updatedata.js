@@ -30,7 +30,7 @@ router.get('/', function (req, res, next) {
         namePromise.then((results) => {
             client.close();
 
-            res.render('updatedata', {title: 'Data Updater', data: results, resourcelist: linklist});
+            res.render('updatedata', {title: 'Data Updater', data: results, resourcelist: linklist, pass: "public"});
 
         });//then
     }); //mongo

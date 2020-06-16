@@ -4,7 +4,13 @@ body {
     background-color: black;
     white-space: pre-wrap;
 }
-
+#block {
+    z-index: 9999999999;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+}
 #updateall {
     margin: 0 auto;
     width: 720px;
