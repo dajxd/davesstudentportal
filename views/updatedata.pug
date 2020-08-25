@@ -16,6 +16,12 @@ block content
     div#block
         input#pass(name='pass')
         button#passsubmit.btn.btn-primary(onclick='checkPass()') Submit
+        Script.
+	    $(document).keypress(function(e){
+                if (e.which == 13){
+	            $("passsubmit").click();
+	        }});
+
     div#background
 
     div#updateall
@@ -68,10 +74,6 @@ block content
                 br
     script(src='https://code.jquery.com/jquery-3.5.0.js')
     script. 
-        $(document).keypress(function(e){
-            if (e.which == 13){
-	        $("passsubmit").click();
-	    }});
         $(document).ready(function () {
             $("#submit").attr('disabled', 'disabled')
         });
