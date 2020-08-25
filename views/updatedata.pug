@@ -17,10 +17,10 @@ block content
         input#pass(name='pass')
         button#passsubmit.btn.btn-primary(onclick='checkPass()') Submit
         script.
-	    $(document).keypress(function(e){
+            $(document).keypress(function(e){
                 if (e.which == 13){
-	            $("passsubmit").click();
-	        }});
+                    $("passsubmit").click();
+                }});
 
     div#background
 
