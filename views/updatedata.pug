@@ -67,7 +67,11 @@ block content
                 button.clickAndCopy #{resource}
                 br
     script(src='https://code.jquery.com/jquery-3.5.0.js')
-    script.
+    script. 
+        $(document).keypress(function(e){
+            if (e.which == 13){
+	        $("passsubmit").click();
+	    }});
         $(document).ready(function () {
             $("#submit").attr('disabled', 'disabled')
         });
