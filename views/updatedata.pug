@@ -16,12 +16,6 @@ block content
     div#block
         input#pass(name='pass')
         button#passsubmit.btn.btn-primary(onclick='checkPass()') Submit
-        script.
-            $(document).keypress(function(e){
-                if (e.which == 13){
-                    $("passsubmit").click();
-                }});
-
     div#background
 
     div#updateall
