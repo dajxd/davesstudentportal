@@ -1,6 +1,7 @@
 extends layout
 
 block content
+    script(src='https://code.jquery.com/jquery-3.5.0.js')
     script.
         function checkPass() {
             $(function () {
@@ -66,7 +67,7 @@ block content
             each resource in resourcelist
                 button.clickAndCopy #{resource}
                 br
-    script(src='https://code.jquery.com/jquery-3.5.0.js')
+
     script.
         $(document).ready(function () {
             $("#submit").attr('disabled', 'disabled')
