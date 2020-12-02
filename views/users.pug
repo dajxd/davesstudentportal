@@ -6,13 +6,13 @@ block content
     div#allusers
         h1#hiname Hey #{name}!
         div.usersection
-            h2 Here's what we talked about for homework:
+            h2 Homework
             ul
                 each val,key  in homework
                     if decodeURIComponent(val) != "undefined"
                         li= decodeURIComponent(val)
         div.usersection#notesdiv
-            h2 Other things to think about:
+            h2 Notes
             p#userpagenotes #{decodeURIComponent(notes)}
         div.usersection
             h2 Resources:
@@ -22,10 +22,14 @@ block content
                     p
         div.usersection
             form(method='get' action='/updatepass' id='updatepasswordform')
-                h2 Set new password:
-                input#newpass(type='text', placeholder='New Password' name='newpass')
+
+                input#newpass(type='text', placeholder='Set New Password' name='newpass')
                 input#name(placeholder=name, type='hidden' name='name')
+                br
                 button#submit.btn.btn-primary(type='submit') Submit
+                br
+            form(method='get' action='/logout' id='logoutbutton')
+                button#logout.btn.btn-primary(type='submit') Log Out
     script(src='https://code.jquery.com/jquery-3.5.0.js')
     script.
         $(function () {

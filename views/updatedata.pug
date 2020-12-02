@@ -2,21 +2,13 @@ extends layout
 
 block content
     script(src='https://code.jquery.com/jquery-3.5.0.js')
-    script.
-        function checkPass() {
-            $(function () {
-                if ($('input[name="pass"]').val() == JSON.parse('!{JSON.stringify(pass)}')){
-                    $('#block').remove();
-                }
-                else {
-                    alert('nope');
-                }
-            })
-        }
 
-    div#block
-        input#pass(name='pass')
-        button#passsubmit.btn.btn-primary(onclick='checkPass()') Submit
+    script.
+        var locked = !{lock};
+        console.log(locked);
+        if (locked) {
+            location.replace('https://www.davesstudents.com');
+        }
     div#background
 
     div#updateall

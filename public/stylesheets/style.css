@@ -1,6 +1,6 @@
 body {
     margin: 0 0 0 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
     background-color: black;
     white-space: pre-wrap;
 }
@@ -23,12 +23,13 @@ body {
 
 .usersection {
     background-color: whitesmoke;
-    width: 800px;
+
+    width: 700px;
     margin: 0 auto 10px;
     text-align: center;
     padding: 5px;
-    border-radius: 4em/6em;
-    border: 4px solid black;
+    border-radius: 3em/2em;
+    /*border: 4px solid black;*/
 }
 
 #indextitle {
@@ -78,6 +79,7 @@ body {
     border-radius: 4em/6em;
 }
 
+
 #background {
     background-image: url("/images/bg.jpg");
     width: 110%;
@@ -89,16 +91,23 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+#studateopts {
+    padding-left: 180px;
+}
 
+
+#studateopts select {
+    text-align: center;
+}
+.adminlinks {
+    color: whitesmoke;
+}
 #userpagenotes {
     text-align: center;
     font-size: 1.2em;
+    padding: 0 10px 10px 10px;
 
 
-}
-
-#notesdiv {
-    width: 900px;
 }
 
 #gobutton {
@@ -118,6 +127,7 @@ h1 {
 
 h2 {
     font-size: 1.7em;
+    text-decoration: underline;
     color: #d5aa24;
 }
 
@@ -194,10 +204,31 @@ textarea {
     margin-top: -10px;
 }
 
-#nameselection {
+#nameselection, #dateselection {
     width: 100px;
 }
-
+#logoutsec {
+    width: 100px;
+}
+#logout {
+    width: 100px;
+    height: 30px;
+    border-radius: 4em/5em;
+    border: 1px solid black;
+    font-size: .8em;
+    font-family: 'Montserrat', sans-serif;;
+    background-color: #FFFCEF;
+}
+#submit {
+    width: 100px;
+    height: 30px;
+    border-radius: 4em/5em;
+    border: 1px solid black;
+    font-size: .8em;
+    font-family: 'Montserrat', sans-serif;;
+    background-color: #FFFCEF;
+    margin-bottom: 15px;
+}
 
 #newname {
 }

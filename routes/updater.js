@@ -2,7 +2,11 @@ var express = require('express');
 var router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://davem:" + process.env.MONGOKEY + "@studentdata-8hxes.gcp.mongodb.net/test?retryWrites=true&w=majority&family=4";
-
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); // months are zero indexed
+var yyyy = today.getFullYear();
+lessondate = mm + '/' + dd + '/' + yyyy;
 
 router.get('/', function (req, res, next) {
     function rfc3986EncodeURIComponent(str) {
@@ -36,6 +40,7 @@ router.get('/', function (req, res, next) {
         }
         console.log('Connected...');
         const collection = client.db("all").collection("allstudents");
+        const logcollection = client.db("all").collection("log");
 
         let namePromise = new Promise((resolve, reject) => {
             collection.find().toArray((err, results) => {
@@ -85,6 +90,9 @@ router.get('/', function (req, res, next) {
                     {name: nameselection, homework: newHomework, notes: newnotes, links: newlinks}
                 )
             }
+            logcollection.insertOne(
+                {name: nameselection, homework: newHomework, notes: newnotes, links: newlinks, ldate: lessondate}
+            )
             client.close();
             res.render('updater', {title: 'Updated'})
         });

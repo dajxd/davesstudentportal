@@ -4,33 +4,12 @@ block content
     link(rel='stylesheet', href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')
     script(src='https://code.jquery.com/jquery-3.5.0.js')
     script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
-    //script.
-    //    $(function () {
-    //        $("#dialog").dialog();
-    //    });
-    //div#dialog(title="Updated Site")
-    //    p Now, after you log in, you should stay logged in for exactly a week unless you click the log out button. Please let me know if it doesn't seem to work right!
-
-
-    div#background
-
-    div#allbg
-    div#all
-
-        h3#indextitle=title
-        form(method='post' action='/')
-            div#login.form-group
-                input#name.form-control(type='text' placeholder='First Name' name='name')
-                br
-                input#password.form-control(placeholder='Password' name='password' type='password')
-                br
-                button#gobutton.btn.btn-primary(type='submit') Submit
-                br
-            center
-                br
-                h3#error #{error}
-
-
+    center
+        br
+        a(href="/updatedata").adminlinks update
+        br
+        br
+        a(href="/logviewer").adminlinks logs
     script.
         var bMobile =
             navigator.userAgent.indexOf("Mobile") !== -1 ||
@@ -41,7 +20,6 @@ block content
 
         var sheet = document.createElement('style')
         if (bMobile){
-            console.log('yep')
             sheet.innerHTML = "form {margin: auto;}  body {font-size: 2.5em;} " +
                 "#indextitle {margin-bottom:0; font-size:2.5em;}#login {text-align: center;} " +
                 "#allbg, #all {width:900px;height:400px; padding-bottom: 40px; padding-top:20px;}" +
