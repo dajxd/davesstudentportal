@@ -9,25 +9,26 @@ var yyyy = today.getFullYear();
 lessondate = mm + '/' + dd + '/' + yyyy;
 
 router.get('/', function (req, res, next) {
-    function rfc3986EncodeURIComponent(str) {
+    function encode(str) {
+        // rfc3986EncodeURIComponent was too long of a name
         return encodeURIComponent(str).replace(/[!'()*]/g, escape);
     }
 
     nameselection = req.query.nameselection;
-    homework1 = rfc3986EncodeURIComponent(req.query.homework1);
-    homework2 = rfc3986EncodeURIComponent(req.query.homework2);
-    homework3 = rfc3986EncodeURIComponent(req.query.homework3);
-    homework4 = rfc3986EncodeURIComponent(req.query.homework4);
-    link1 = rfc3986EncodeURIComponent(req.query.link1);
-    link2 = rfc3986EncodeURIComponent(req.query.link2);
-    link3 = rfc3986EncodeURIComponent(req.query.link3);
-    link4 = rfc3986EncodeURIComponent(req.query.link4);
-    link1title = rfc3986EncodeURIComponent(req.query.link1title);
-    link2title = rfc3986EncodeURIComponent(req.query.link2title);
-    link3title = rfc3986EncodeURIComponent(req.query.link3title);
-    link4title = rfc3986EncodeURIComponent(req.query.link4title);
-    newnotes = rfc3986EncodeURIComponent(req.query.notes).replace(/[!'()*]/g, escape); //should probably do this to all of them
-
+    homework1 = encode(req.query.homework1);
+    homework2 = encode(req.query.homework2);
+    homework3 = encode(req.query.homework3);
+    homework4 = encode(req.query.homework4);
+    link1 = encode(req.query.link1);
+    link2 = encode(req.query.link2);
+    link3 = encode(req.query.link3);
+    link4 = encode(req.query.link4);
+    link1title = encode(req.query.link1title);
+    link2title = encode(req.query.link2title);
+    link3title = encode(req.query.link3title);
+    link4title = encode(req.query.link4title);
+    newnotes = encode(req.query.notes).replace(/[!'()*]/g, escape); // i think this is being done twice 'cause encode.
+                                                                              // remove it another day
     if (req.query.newname != undefined) {
         var newname = req.query.newname
         nameselection = newname.toLowerCase()

@@ -69,14 +69,10 @@ block content
                 // clear date options:
                 $('select[name="dateselection"]').empty();
                 var selname = $(this).val();
-                var currentDates = document.getElementById('dateselection').options
                 for (lesson in sdata) {
                     if (sdata[lesson].name == selname) {
                         var thisdate = sdata[lesson].ldate;
-                        // don't add if the date is already there
-                        if (!currentDates.includes(thisdate)) {
-                            $('select[name="dateselection"]').append(new Option(thisdate, thisdate))
-                        }
+                        $('select[name="dateselection"]').append(new Option(thisdate, thisdate))
                     }
                 }
             });
