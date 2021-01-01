@@ -17,8 +17,8 @@ block content
                 div#studateopts
                     select#nameselection.form-control(name='nameselection')
                         option(val='blah') student
-                        each thing in data
-                            option(val=thing.name) #{thing.name}
+                        // each thing in data
+                        //     option(val=thing.name) #{thing.name}
                     br
                     select#dateselection.form-control(name='dateselection')
                         option(val='why') date
@@ -63,7 +63,15 @@ block content
 
         var sdata = JSON.parse('!{JSON.stringify(data)}');
         $(function () {
-
+            // populate names
+            let donenames = [];
+            for (item in sdata) {
+                let name = sdata[item].name;
+                if (!donenames.includes(name)) {
+                    $('select[name="nameselection"]').append(new Option(name, name));
+                    donenames.push(name);
+                }
+            }
             // for when a new student is selected:
             $('select[name="nameselection"]').change(function () {
                 // clear date options:
