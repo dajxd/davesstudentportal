@@ -4,8 +4,9 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://davem:" + process.env.MONGOKEY + "@studentdata-8hxes.gcp.mongodb.net/test?retryWrites=true&w=majority&family=4";
 const fs = require('fs');
 const path = './public/resources'
+let linklist = [];
 fs.readdir(path, function (err, items) {
-    let linklist = [];
+
     for (l in items) {
         linklist.push('/resources/'.concat(items[l]));
     }
@@ -13,10 +14,11 @@ fs.readdir(path, function (err, items) {
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    let locked = true;
-    if (req.cookies['user'] == process.env.ADMINCOOKIE) {
-        locked = false;
-    }
+    // let locked = true;
+    // if (req.cookies['user'] == process.env.ADMINCOOKIE) {
+    //     locked = false;
+    // }
+    locked = false;
     MongoClient.connect(uri, function (err, client) {
         if (err) {
             console.log('Error occurred while connecting to MongoDB Atlas...\n', err);
