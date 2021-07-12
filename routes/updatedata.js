@@ -14,11 +14,10 @@ fs.readdir(path, function (err, items) {
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    // let locked = true;
-    // if (req.cookies['user'] == process.env.ADMINCOOKIE) {
-    //     locked = false;
-    // }
-    locked = false;
+    let locked = true;
+    if (req.cookies['user'] == process.env.ADMINCOOKIE) {
+        locked = false;
+    }
     MongoClient.connect(uri, function (err, client) {
         if (err) {
             console.log('Error occurred while connecting to MongoDB Atlas...\n', err);
