@@ -57,7 +57,7 @@ block content
         div#linkchoices
             h2 Click to copy
             each resource in resourcelist
-                button.clickAndCopy #{resource}
+                button.clickandcopy #{resource}
                 br
 
     script.
@@ -72,7 +72,7 @@ block content
             $temp.remove();
         }
         $(function () {
-            $('.clickAndCopy').click(function () {
+            $('.clickandcopy').click(function () {
                 copyToClipboard($(this).html());
             })
         });

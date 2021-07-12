@@ -1,9 +1,7 @@
 extends layout
 
 block content
-    //link(rel='stylesheet', href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')
     script(src='https://code.jquery.com/jquery-3.5.0.js')
-    //script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
 
 
     div#background
@@ -18,7 +16,7 @@ block content
                 br
                 input#password.form-control(placeholder='Password' name='password' type='password')
                 br
-                button#gobutton.btn.btn-primary(type='submit') Submit
+                button#submitbutton.btn.btn-primary(type='submit') Submit
                 br
             center
                 br
@@ -38,13 +36,13 @@ block content
             sheet.innerHTML = "/*mobile*/ " + "form {margin: auto;}  body {font-size: 2.5em;} " +
                 "#indextitle {margin-bottom:0; font-size:2.5em;}#login {text-align: center;} " +
                 "#bubblebackground, #all {width:900px;height:400px; padding-bottom: 40px; padding-top:20px;}" +
-                "#all p {font-size:1em;} #gobutton   {width: 150px; height: 70px;}" +
+                "#all p {font-size:1em;} #submitbutton   {width: 150px; height: 70px;}" +
                 "input {height: 70px; width: 250px; font-size: 1em; margin-top:25px;}";
         }
         else {
             sheet.innerHTML = "/*desktop*/ " +"form {margin: auto;}  body {font-size: 1.5em;} " +
                 "h2 {color:white; margin-bottom:0;}#login {text-align: center;} " +
-                "#gobutton {} input {}}";
+                "#submitbutton {} input {}}";
         }
         document.body.appendChild(sheet);
 

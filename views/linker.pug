@@ -17,17 +17,16 @@ block content
 
 
         let sheet = document.createElement('style')
-        if (bMobile){
+        if (bMobile) {
             sheet.innerHTML = "form {margin: auto;}  body {font-size: 2.5em;} " +
                 "#indextitle {margin-bottom:0; font-size:2.5em;}#login {text-align: center;} " +
                 "#bubblebackground, #all {width:900px;height:400px; padding-bottom: 40px; padding-top:20px;}" +
-                "#all p {font-size:1em;} #gobutton   {width: 150px; height: 70px;}" +
+                "#all p {font-size:1em;} #submitbutton   {width: 150px; height: 70px;}" +
                 "input {height: 70px; width: 250px; font-size: 1em; margin-top:25px;}";
-        }
-        else {
+        } else {
             sheet.innerHTML = "form {margin: auto;}  body {font-size: 1.5em;} " +
                 "h2 {color:white; margin-bottom:0;}#login {text-align: center;} " +
-                "#gobutton {} input {}}";
+                "#submitbutton {} input {}}";
         }
         document.body.appendChild(sheet);
 
