@@ -1,20 +1,14 @@
 extends layout
 
 block content
-    link(rel='stylesheet', href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')
+    //link(rel='stylesheet', href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')
     script(src='https://code.jquery.com/jquery-3.5.0.js')
-    script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
-    //script.
-    //    $(function () {
-    //        $("#dialog").dialog();
-    //    });
-    //div#dialog(title="Updated Site")
-    //    p Now, after you log in, you should stay logged in for exactly a week unless you click the log out button. Please let me know if it doesn't seem to work right!
+    //script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
 
 
     div#background
 
-    div#allbg
+    div#bubblebackground
     div#all
 
         h3#indextitle=title
@@ -32,24 +26,23 @@ block content
 
 
     script.
-        var bMobile =
+        let bMobile =
             navigator.userAgent.indexOf("Mobile") !== -1 ||
             navigator.userAgent.indexOf("iPhone") !== -1 ||
             navigator.userAgent.indexOf("Android") !== -1 ||
             navigator.userAgent.indexOf("Windows Phone") !== -1;
 
 
-        var sheet = document.createElement('style')
+        let sheet = document.createElement('style')
         if (bMobile){
-            console.log('yep')
-            sheet.innerHTML = "form {margin: auto;}  body {font-size: 2.5em;} " +
+            sheet.innerHTML = "/*mobile*/ " + "form {margin: auto;}  body {font-size: 2.5em;} " +
                 "#indextitle {margin-bottom:0; font-size:2.5em;}#login {text-align: center;} " +
-                "#allbg, #all {width:900px;height:400px; padding-bottom: 40px; padding-top:20px;}" +
+                "#bubblebackground, #all {width:900px;height:400px; padding-bottom: 40px; padding-top:20px;}" +
                 "#all p {font-size:1em;} #gobutton   {width: 150px; height: 70px;}" +
                 "input {height: 70px; width: 250px; font-size: 1em; margin-top:25px;}";
         }
         else {
-            sheet.innerHTML = "form {margin: auto;}  body {font-size: 1.5em;} " +
+            sheet.innerHTML = "/*desktop*/ " +"form {margin: auto;}  body {font-size: 1.5em;} " +
                 "h2 {color:white; margin-bottom:0;}#login {text-align: center;} " +
                 "#gobutton {} input {}}";
         }

@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const crypto = require('crypto');
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://davem:" + process.env.MONGOKEY + "@studentdata-8hxes.gcp.mongodb.net/test?retryWrites=true&w=majority&family=4";
@@ -9,11 +9,11 @@ router.get('/',
     function (req, res, next) {
         if (req.cookies['user'] != undefined) {
             // read cryptoed cookie:
-            var mykey = crypto.createDecipher('aes-128-cbc', process.env.CYPHER);
-            var usrstr = mykey.update(req.cookies['user'], 'hex', 'utf8')
+            const mykey = crypto.createDecipher('aes-128-cbc', process.env.CYPHER);
+            let usrstr = mykey.update(req.cookies['user'], 'hex', 'utf8');
             usrstr += mykey.final('utf8');
             console.log(usrstr)
-            var name = usrstr;
+            let name = usrstr;
 
             MongoClient.connect(uri, function (err, client) {
                 if (err) {
@@ -45,9 +45,9 @@ router.get('/',
 
 router.post('/',
     function (req, res) {
-        var name = req.body.name;
+        let name = req.body.name;
         name = name.toLowerCase();
-        var password = req.body.password;
+        let password = req.body.password;
         //check if me:
         if (name == process.env.ADMINU && password == process.env.ADMINP) {
                 res.cookie('user', process.env.ADMINCOOKIE, {maxAge: 604800000, httpOnly: false, sameSite: 'strict'});
@@ -67,8 +67,8 @@ router.post('/',
                             let dname = results[0].name;
                             let displayname = dname.charAt(0).toUpperCase() + dname.slice(1);
                             if (req.cookies['user'] == undefined) {
-                                var usercypher = crypto.createCipher('aes-128-cbc', process.env.CYPHER);
-                                var cryptouser = usercypher.update(dname, 'utf8', 'hex')
+                                const usercypher = crypto.createCipher('aes-128-cbc', process.env.CYPHER);
+                                let cryptouser = usercypher.update(dname, 'utf8', 'hex');
                                 cryptouser += usercypher.final('hex');
 
                                 res.cookie('user', cryptouser, {

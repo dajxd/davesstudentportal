@@ -33,7 +33,7 @@ block content
     script(src='https://code.jquery.com/jquery-3.5.0.js')
     script.
         $(function () {
-            var sname = JSON.parse('!{JSON.stringify(name)}');
+            let sname = JSON.parse('!{JSON.stringify(name)}');
             $('input[name="name"]').val(sname);
         });
 

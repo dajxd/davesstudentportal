@@ -1,11 +1,11 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://davem:" + process.env.MONGOKEY + "@studentdata-8hxes.gcp.mongodb.net/test?retryWrites=true&w=majority&family=4";
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); // months are zero indexed
-var yyyy = today.getFullYear();
+let today = new Date();
+let dd = String(today.getDate()).padStart(2, '0');
+let mm = String(today.getMonth() + 1).padStart(2, '0'); // zero indexed
+let yyyy = today.getFullYear();
 lessondate = mm + '/' + dd + '/' + yyyy;
 
 router.get('/', function (req, res, next) {
@@ -14,24 +14,13 @@ router.get('/', function (req, res, next) {
         return encodeURIComponent(str).replace(/[!'()*]/g, escape);
     }
 
-    nameselection = req.query.nameselection;
-    homework1 = encode(req.query.homework1);
-    homework2 = encode(req.query.homework2);
-    homework3 = encode(req.query.homework3);
-    homework4 = encode(req.query.homework4);
-    link1 = encode(req.query.link1);
-    link2 = encode(req.query.link2);
-    link3 = encode(req.query.link3);
-    link4 = encode(req.query.link4);
-    link1title = encode(req.query.link1title);
-    link2title = encode(req.query.link2title);
-    link3title = encode(req.query.link3title);
-    link4title = encode(req.query.link4title);
-    newnotes = encode(req.query.notes).replace(/[!'()*]/g, escape); // i think this is being done twice 'cause encode.
-                                                                              // remove it another day
+    let nameselection = req.query.nameselection;
+
+
+    let newnotes = encode(req.query.notes).replace(/[!'()*]/g, escape); // i think this is being done twice 'cause encode.
+                                                                                 // remove it another day
     if (req.query.newname != undefined) {
-        var newname = req.query.newname
-        nameselection = newname.toLowerCase()
+        nameselection = req.query.newname.toLowerCase()
     }
 
 
@@ -45,7 +34,7 @@ router.get('/', function (req, res, next) {
 
         let namePromise = new Promise((resolve, reject) => {
             collection.find().toArray((err, results) => {
-                allnames = [];
+                let allnames = [];
                 for (i in results) {
                     allnames.push(results[i].name)
                 }
@@ -55,24 +44,22 @@ router.get('/', function (req, res, next) {
             });
 
         });
-        newlinks = {};
-        newHomework = {};
-        homeworks = [homework1, homework2, homework3, homework4];
-        var hwc = 1
+
+        let newLinks = {};
+        let newHomework = {};
+        let homeworks = [encode(req.query.homework1), encode(req.query.homework2), encode(req.query.homework3), encode(req.query.homework4)];
+        let hwc = 1
         for (hw in homeworks) {
             if (homeworks[hw].length > 1) {
                 newHomework[hwc] = homeworks[hw];
                 hwc = hwc + 1;
             }
         }
-        link1title = req.query.link1title;
-        link2title = req.query.link2title;
-        link3title = req.query.link3title;
-        link4title = req.query.link4title;
-        newlinks[link1title] = link1;
-        newlinks[link2title] = link2;
-        newlinks[link3title] = link3;
-        newlinks[link4title] = link4;
+
+        newLinks[req.query.link1title] = encode(req.query.link1);
+        newLinks[req.query.link2title] = encode(req.query.link2);
+        newLinks[req.query.link3title] = encode(req.query.link3);
+        newLinks[req.query.link4title] = encode(req.query.link4);
 
         namePromise.then((allnames) => {
             if (allnames.includes(nameselection)) {
@@ -82,17 +69,17 @@ router.get('/', function (req, res, next) {
                         $set: {
                             homework: newHomework,
                             notes: newnotes,
-                            links: newlinks
+                            links: newLinks
                         }
                     }
                 );
             } else {
                 collection.insertOne(
-                    {name: nameselection, homework: newHomework, notes: newnotes, links: newlinks}
+                    {name: nameselection, homework: newHomework, notes: newnotes, links: newLinks}
                 )
             }
             logcollection.insertOne(
-                {name: nameselection, homework: newHomework, notes: newnotes, links: newlinks, ldate: lessondate}
+                {name: nameselection, homework: newHomework, notes: newnotes, links: newLinks, ldate: lessondate}
             )
             client.close();
             res.render('updater', {title: 'Updated'})

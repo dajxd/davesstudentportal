@@ -3,7 +3,7 @@ extends layout
 block content
     script(src='https://code.jquery.com/jquery-3.5.0.js')
     script.
-        var locked = !{lock};
+        let locked = !{lock};
         console.log(locked);
         if (locked) {
             location.replace('https://www.davesstudents.com');
@@ -16,12 +16,12 @@ block content
             div.form-group
                 div#studateopts
                     select#nameselection.form-control(name='nameselection')
-                        option(val='blah') student
+                        option(val='') Student
                         // each thing in data
                         //     option(val=thing.name) #{thing.name}
                     br
                     select#dateselection.form-control(name='dateselection')
-                        option(val='why') date
+                        option(val='') Date
 
                 div#left
                     h2 Homework:
@@ -61,7 +61,7 @@ block content
 
 
 
-        var sdata = JSON.parse('!{JSON.stringify(data)}');
+        let sdata = JSON.parse('!{JSON.stringify(data)}');
         $(function () {
             // populate names
             let donenames = [];
@@ -76,10 +76,10 @@ block content
             $('select[name="nameselection"]').change(function () {
                 // clear date options:
                 $('select[name="dateselection"]').empty();
-                var selname = $(this).val();
+                let selname = $(this).val();
                 for (lesson in sdata) {
                     if (sdata[lesson].name == selname) {
-                        var thisdate = sdata[lesson].ldate;
+                        let thisdate = sdata[lesson].ldate;
                         $('select[name="dateselection"]').append(new Option(thisdate, thisdate))
                     }
                 }

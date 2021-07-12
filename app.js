@@ -1,18 +1,18 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var updatedataRouter = require('./routes/updatedata');
-var updaterRouter = require('./routes/updater');
-var logoutRouter = require('./routes/logout');
-var linkerRouter = require('./routes/linker');
-var updatepassRouter = require('./routes/updatepass');
-var logviewerRouter = require('./routes/logviewer');
-var app = express();
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const updatedataRouter = require('./routes/updatedata');
+const updaterRouter = require('./routes/updater');
+const logoutRouter = require('./routes/logout');
+const linkerRouter = require('./routes/linker');
+const updatepassRouter = require('./routes/updatepass');
+const logviewerRouter = require('./routes/logviewer');
+const app = express();
 
 // const MongoClient = require('mongodb').MongoClient;
 // const uri = "mongodb+srv://davem:" + process.env.MONGOKEY + "@studentdata-8hxes.gcp.mongodb.net/test?retryWrites=true&w=majority&family=4";

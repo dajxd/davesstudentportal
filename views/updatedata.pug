@@ -4,7 +4,7 @@ block content
     script(src='https://code.jquery.com/jquery-3.5.0.js')
 
     script.
-        var locked = !{lock};
+        let locked = !{lock};
         console.log(locked);
         if (locked) {
             location.replace('https://www.davesstudents.com');
@@ -17,7 +17,7 @@ block content
             div.form-group
 
                 select#nameselection.form-control(name='nameselection')
-                    option(val='blah') Choose a Student
+                    option(val='') Choose a Student
                     each thing in data
                         option(val=thing.name) #{thing.name}
                     option(val='addnew') New Student
@@ -65,7 +65,7 @@ block content
             $("#submit").attr('disabled', 'disabled')
         });
         function copyToClipboard(text) {
-            var $temp = $("<input>");
+            let $temp = $("<input>");
             $("body").append($temp);
             $temp.val(text).select();
             document.execCommand("copy");
@@ -73,8 +73,7 @@ block content
         }
         $(function () {
             $('.clickAndCopy').click(function () {
-                var texty = $(this).html();
-                copyToClipboard(texty)
+                copyToClipboard($(this).html());
             })
         });
         $(function () {
@@ -83,10 +82,10 @@ block content
             })
         })
 
-        var sdata = JSON.parse('!{JSON.stringify(data)}');
+        let sdata = JSON.parse('!{JSON.stringify(data)}');
         $(function () {
             $('select[name="nameselection"]').change(function () {
-                var selname = $(this).val();
+                let selname = $(this).val();
                 $("#submit").removeAttr('disabled', 'false');
                 $("#newname").remove();
                 if (selname == 'New Student') {

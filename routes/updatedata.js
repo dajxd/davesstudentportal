@@ -1,19 +1,19 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://davem:" + process.env.MONGOKEY + "@studentdata-8hxes.gcp.mongodb.net/test?retryWrites=true&w=majority&family=4";
-var fs = require('fs');
-var path = './public/resources'
+const fs = require('fs');
+const path = './public/resources'
 fs.readdir(path, function (err, items) {
-    linklist = [];
-    for (bit in items) {
-        linklist.push('/resources/'.concat(items[bit]));
+    let linklist = [];
+    for (l in items) {
+        linklist.push('/resources/'.concat(items[l]));
     }
 })
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    var locked = true;
+    let locked = true;
     if (req.cookies['user'] == process.env.ADMINCOOKIE) {
         locked = false;
     }

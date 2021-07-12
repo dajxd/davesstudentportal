@@ -34,8 +34,8 @@ body {
 
 #indextitle {
     color: #FFFCEF;
-    font-size: 2em;
-    margin: 15px 0 0;
+    font-size: 1.7em;
+    margin: 15px;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -64,14 +64,14 @@ body {
 
 }
 
-#allbg {
+#bubblebackground {
     height: 250px;
     text-align: center;
     width: 35%;
     position: absolute;
     top: 50%;
     left: 50%;
-    min-width: 413px;
+    min-width: 500px;
 
     transform: translate(-50%, -50%);
     background-color: black;
@@ -111,14 +111,14 @@ body {
 }
 
 #gobutton {
-    width: 100px;
-    height: 30px;
+    width: 120px;
+    height: 40px;
     border-radius: 4em/5em;
     border: 1px solid black;
     font-size: .6em;
     font-family: 'Montserrat', sans-serif;;
     background-color: #FFFCEF;
-    margin-top: 15px;
+    margin: 10px;
 }
 
 h1 {
